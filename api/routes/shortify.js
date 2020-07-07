@@ -1,9 +1,10 @@
 import express from 'express';
 import validUrl from 'valid-url';
 import shortCode from '../middleware/urlCodeGen';
+import cache from '../service/cache';
+import url from '../model/url';
 
 const router = express.Router();
-import url from '../model/url';
 
 router.get("/item/:code", async (req, res) => {
     const code = req.params.code;
@@ -40,7 +41,7 @@ router.post("/item", async (req, res) => {
             res.status(401).json(error);
         }        
     } else {
-        return res.status(401).json({message: "Invalid URL"})
+        return res.status(401).json("Invalid URL");
     }
 });
 
