@@ -1,0 +1,34 @@
+{
+  "name": "shorty",
+  "version": "1.0.0",
+  "description": "url shortner",
+  "main": "server.js",
+  "module": "main.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r0hnx/shorty.git"
+  },
+  "author": "r0hnx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/r0hnx/shorty/issues"
+  },
+  "homepage": "https://github.com/r0hnx/shorty#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.22",
+    "redis": "^3.0.2",
+    "shortid": "^2.2.15",
+    "util": "^0.12.3",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
