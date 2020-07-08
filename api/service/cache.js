@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import redis from 'redis';
-import util from 'util';
+import { promisify } from 'util';
 
 const client = redis.createClient({
     port: process.env.DBPORT,
@@ -8,9 +8,8 @@ const client = redis.createClient({
     password: process.env.DBPASSWORD
 });
 
-client.hget = util.promisify(client.hget);
-
-client.on('error', (err) => {})
+client.on('error', (err) => console.log(err))
+client.hget = promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
 
 mongoose.Query.prototype.cache = (options = {}) => {

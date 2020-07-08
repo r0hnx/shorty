@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 dotenv.config();
@@ -9,14 +9,10 @@ app.use(bodyParser.json());
 
 // mongoose init
 mongoose.Promise = global.Promise;
-mongoose.set('debug', true);
-mongoose.connect(
-    process.env.MONGOURI, {
-        keepAlive: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    },
-);
+mongoose.connect(process.env.MONGOURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log("MNGDB OK!"));
 
 // app function declaration
 app.use(function (req, res, next) {
